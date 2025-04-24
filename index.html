@@ -1,37 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Colossal V2</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Mini Discord</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <nav>
-    <div class="nav-left">
-      <a href="#">Colossal</a>
-      <a href="#">Minecraft</a>
-      <span class="status">Menu Status: 🛠️</span>
-    </div>
-    <div class="nav-right">
-      <a href="#">TOS</a>
-      <a href="#">Reselling</a>
-      <a href="#">Discord</a>
-      <a href="#" class="shop-btn">Shop</a>
-    </div>
-  </nav>
-
-  <main class="hero">
-    <div class="hero-text">
-      <h1>Colossal <span class="v2">V2</span></h1>
-      <div class="cta">
-        <a href="#" class="buy-btn">Buy Now</a>
-        <a href="#" class="features-link">Features</a>
-      </div>
-    </div>
-    <div class="hero-img">
-      <img src="https://your-image-url.com/your-monkey-image.png" alt="Gorilla Character" />
-    </div>
-  </main>
+  <div id="login">
+    <input id="usernameInput" placeholder="Enter unique username" />
+    <button onclick="login()">Login</button>
+  </div>
+  <div id="chat" style="display:none;">
+    <div id="usersList"></div>
+    <div id="messages"></div>
+    <input id="messageInput" placeholder="Type a message..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+  <script src="app.js"></script>
 </body>
 </html>
