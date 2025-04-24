@@ -1,152 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login & Unblocked Games</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body {
-      margin: 0;
-      padding: 0;
-      background: #1e1e2f;
-      color: #fff;
-    }
-    .container {
-      max-width: 400px;
-      margin: 80px auto;
-      background: #2a2a3d;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 8px;
-    }
-    button {
-      width: 100%;
-      padding: 10px;
-      background: #5cba47;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    #gameSection, #feedbackSection {
-      display: none;
-    }
-    nav {
-      text-align: center;
-      margin: 20px 0;
-    }
-    nav button {
-      margin: 0 10px;
-      background: #444;
-    }
-    textarea {
-      width: 100%;
-      height: 100px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: none;
-      padding: 10px;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unblocked Central</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+  <div id="home-screen" class="screen active">
+    <h1>Welcome to Unblocked Central 🎮</h1>
+    <p>Login or register to get started</p>
+    <button onclick="switchScreen('login')">Login</button>
+    <button onclick="switchScreen('register')">Register</button>
+  </div>
 
-  <div class="container" id="authSection">
-    <h2>Login or Register</h2>
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
+  <div id="login-screen" class="screen">
+    <h2>Login</h2>
+    <input type="text" id="login-username" placeholder="Username" />
+    <input type="password" id="login-password" placeholder="Password" />
     <button onclick="login()">Login</button>
+    <button onclick="switchScreen('home')">Back</button>
+  </div>
+
+  <div id="register-screen" class="screen">
+    <h2>Register</h2>
+    <input type="text" id="register-username" placeholder="Username" />
+    <input type="password" id="register-password" placeholder="Password" />
     <button onclick="register()">Register</button>
+    <button onclick="switchScreen('home')">Back</button>
   </div>
 
-  <div class="container" id="gameSection">
-    <h2>Unblocked Games</h2>
-    <nav>
-      <button onclick="showGames()">Games</button>
-      <button onclick="showFeedback()">Feedback</button>
-      <button onclick="logout()">Logout</button>
-    </nav>
-    <p>🎮 Game 1 (link)</p>
-    <p>🎮 Game 2 (link)</p>
-    <p>🎮 Game 3 (link)</p>
+  <div id="dashboard-screen" class="screen">
+    <h2>🎮 Unblocked Games</h2>
+    <div class="games">
+      <a href="https://example.com/game1" target="_blank">Game 1</a>
+      <a href="https://example.com/game2" target="_blank">Game 2</a>
+    </div>
+    <button onclick="switchScreen('feedback')">Send Feedback</button>
+    <button onclick="switchScreen('home')">Logout</button>
   </div>
 
-  <div class="container" id="feedbackSection">
-    <h2>Feedback</h2>
-    <nav>
-      <button onclick="showGames()">Games</button>
-      <button onclick="showFeedback()">Feedback</button>
-      <button onclick="logout()">Logout</button>
-    </nav>
-    <textarea id="feedbackInput" placeholder="Type your feedback here..."></textarea>
-    <button onclick="sendFeedback()">Send Feedback</button>
+  <div id="feedback-screen" class="screen">
+    <h2>📣 Feedback</h2>
+    <textarea id="feedback-text" placeholder="Tell us what you think..."></textarea>
+    <button onclick="sendFeedback()">Send</button>
+    <button onclick="switchScreen('dashboard')">Back</button>
   </div>
 
-  <script>
-    function login() {
-      const user = document.getElementById('username').value;
-      const pass = document.getElementById('password').value;
-      if (user && pass) {
-        localStorage.setItem('user', user);
-        document.getElementById('authSection').style.display = 'none';
-        document.getElementById('gameSection').style.display = 'block';
-      } else {
-        alert('Please enter username and password');
-      }
-    }
-
-    function register() {
-      alert('Registration simulated! Now log in.');
-    }
-
-    function logout() {
-      localStorage.removeItem('user');
-      document.getElementById('gameSection').style.display = 'none';
-      document.getElementById('feedbackSection').style.display = 'none';
-      document.getElementById('authSection').style.display = 'block';
-    }
-
-    function showGames() {
-      document.getElementById('gameSection').style.display = 'block';
-      document.getElementById('feedbackSection').style.display = 'none';
-    }
-
-    function showFeedback() {
-      document.getElementById('gameSection').style.display = 'none';
-      document.getElementById('feedbackSection').style.display = 'block';
-    }
-
-    function sendFeedback() {
-      const feedback = document.getElementById('feedbackInput').value;
-      if (feedback.trim()) {
-        const webhookURL = 'YOUR_DISCORD_WEBHOOK_URL'; // Replace this
-        fetch(webhookURL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ content: feedback })
-        })
-        .then(res => alert('Feedback sent!'))
-        .catch(err => alert('Error sending feedback'));
-      } else {
-        alert('Please write something.');
-      }
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
