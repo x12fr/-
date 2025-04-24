@@ -3,50 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Unblocked Central</title>
-  <link rel="stylesheet" href="style.css"/>
+  <title>Colossal Clone</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div id="home-screen" class="screen active">
-    <h1>Welcome to Unblocked Central 🎮</h1>
-    <p>Login or register to get started</p>
-    <button onclick="switchScreen('login')">Login</button>
-    <button onclick="switchScreen('register')">Register</button>
-  </div>
+  <header>
+    <h1>Colossal V2</h1>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#shop">Shop</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-  <div id="login-screen" class="screen">
-    <h2>Login</h2>
-    <input type="text" id="login-username" placeholder="Username" />
-    <input type="password" id="login-password" placeholder="Password" />
-    <button onclick="login()">Login</button>
-    <button onclick="switchScreen('home')">Back</button>
-  </div>
+  <section id="hero">
+    <h2>Fake it till you make it.</h2>
+    <p>The perfect mix of OP, Ghost, and QOL</p>
+    <a href="#get-started" class="btn">Get Started</a>
+  </section>
 
-  <div id="register-screen" class="screen">
-    <h2>Register</h2>
-    <input type="text" id="register-username" placeholder="Username" />
-    <input type="password" id="register-password" placeholder="Password" />
-    <button onclick="register()">Register</button>
-    <button onclick="switchScreen('home')">Back</button>
-  </div>
-
-  <div id="dashboard-screen" class="screen">
-    <h2>🎮 Unblocked Games</h2>
-    <div class="games">
-      <a href="https://example.com/game1" target="_blank">Game 1</a>
-      <a href="https://example.com/game2" target="_blank">Game 2</a>
+  <section id="features">
+    <h2>Features</h2>
+    <div class="feature">
+      <h3>Over Powered</h3>
+      <p>Bend everything to your will with the most game-breaking, undetected features.</p>
     </div>
-    <button onclick="switchScreen('feedback')">Send Feedback</button>
-    <button onclick="switchScreen('home')">Logout</button>
-  </div>
+    <div class="feature">
+      <h3>Ghost Mode</h3>
+      <p>Fully customizable to your liking and ability, used by your favorite pros.</p>
+    </div>
+    <div class="feature">
+      <h3>VR Graphical User Interface</h3>
+      <p>Customize colors to match your style. Fully controlled by controller inputs.</p>
+    </div>
+  </section>
 
-  <div id="feedback-screen" class="screen">
-    <h2>📣 Feedback</h2>
-    <textarea id="feedback-text" placeholder="Tell us what you think..."></textarea>
-    <button onclick="sendFeedback()">Send</button>
-    <button onclick="switchScreen('dashboard')">Back</button>
-  </div>
+  <section id="shop">
+    <h2>Shop</h2>
+    <p>Choose a plan that suits you best.</p>
+    <ul>
+      <li>Monthly - $5.99</li>
+      <li>Permanent - $19.99</li>
+    </ul>
+  </section>
 
-  <script src="script.js"></script>
+  <footer>
+    <p>&copy; 2025 Colossal Clone</p>
+  </footer>
 </body>
 </html>
